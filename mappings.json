@@ -1,0 +1,129 @@
+{
+  "youth_profiles": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 1
+    },
+    "mappings": {
+      "properties": {
+        "youth_id": { "type": "keyword" },
+        "first_name": { "type": "text", "fields": { "keyword": { "type": "keyword" } } },
+        "last_name": { "type": "text", "fields": { "keyword": { "type": "keyword" } } },
+        "date_of_birth": { "type": "date" },
+        "age_at_intake": { "type": "integer" },
+        "gender": { "type": "keyword" },
+        "race": { "type": "keyword" },
+        "ethnicity": { "type": "keyword" },
+        "county": { "type": "keyword" },
+        "city": { "type": "text", "fields": { "keyword": { "type": "keyword" } } },
+        "zip_code": { "type": "keyword" },
+        "geo_location": { "type": "geo_point" },
+        "referral_source": { "type": "keyword" },
+        "referral_date": { "type": "date" },
+        "intake_date": { "type": "date" },
+        "discharge_date": { "type": "date" },
+        "case_status": { "type": "keyword" },
+        "supervision_level": { "type": "keyword" },
+        "primary_offense": { "type": "keyword" },
+        "offense_category": { "type": "keyword" },
+        "offense_severity": { "type": "keyword" },
+        "prior_referrals": { "type": "integer" },
+        "placement_type": { "type": "keyword" },
+        "facility_name": { "type": "keyword" },
+        "assigned_officer": { "type": "text", "fields": { "keyword": { "type": "keyword" } } },
+        "district": { "type": "keyword" },
+        "school_enrolled": { "type": "boolean" },
+        "mental_health_flag": { "type": "boolean" },
+        "substance_abuse_flag": { "type": "boolean" },
+        "tags": { "type": "keyword" }
+      }
+    }
+  },
+
+  "case_notes": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 1
+    },
+    "mappings": {
+      "properties": {
+        "note_id": { "type": "keyword" },
+        "youth_id": { "type": "keyword" },
+        "author": { "type": "text", "fields": { "keyword": { "type": "keyword" } } },
+        "author_role": { "type": "keyword" },
+        "note_date": { "type": "date" },
+        "note_type": { "type": "keyword" },
+        "subject": { "type": "text" },
+        "body": { "type": "text", "analyzer": "standard" },
+        "sentiment": { "type": "keyword" },
+        "contact_method": { "type": "keyword" },
+        "follow_up_required": { "type": "boolean" },
+        "follow_up_date": { "type": "date" },
+        "tags": { "type": "keyword" }
+      }
+    }
+  },
+
+  "assessments": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 1
+    },
+    "mappings": {
+      "properties": {
+        "assessment_id": { "type": "keyword" },
+        "youth_id": { "type": "keyword" },
+        "assessment_type": { "type": "keyword" },
+        "assessment_date": { "type": "date" },
+        "assessor": { "type": "text", "fields": { "keyword": { "type": "keyword" } } },
+        "overall_risk_score": { "type": "float" },
+        "risk_level": { "type": "keyword" },
+        "domain_scores": {
+          "type": "nested",
+          "properties": {
+            "domain": { "type": "keyword" },
+            "score": { "type": "float" },
+            "max_score": { "type": "float" }
+          }
+        },
+        "criminal_history_score": { "type": "float" },
+        "family_score": { "type": "float" },
+        "education_score": { "type": "float" },
+        "peer_score": { "type": "float" },
+        "substance_abuse_score": { "type": "float" },
+        "mental_health_score": { "type": "float" },
+        "attitudes_score": { "type": "float" },
+        "skills_score": { "type": "float" },
+        "recommended_supervision": { "type": "keyword" },
+        "notes": { "type": "text" }
+      }
+    }
+  },
+
+  "outcomes": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 1
+    },
+    "mappings": {
+      "properties": {
+        "outcome_id": { "type": "keyword" },
+        "youth_id": { "type": "keyword" },
+        "discharge_date": { "type": "date" },
+        "discharge_reason": { "type": "keyword" },
+        "length_of_stay_days": { "type": "integer" },
+        "program_completed": { "type": "boolean" },
+        "recidivism_6mo": { "type": "boolean" },
+        "recidivism_12mo": { "type": "boolean" },
+        "recidivism_offense": { "type": "keyword" },
+        "recidivism_date": { "type": "date" },
+        "education_outcome": { "type": "keyword" },
+        "employment_at_discharge": { "type": "boolean" },
+        "risk_score_change": { "type": "float" },
+        "services_completed": { "type": "keyword" },
+        "restitution_paid": { "type": "boolean" },
+        "community_service_hours": { "type": "integer" }
+      }
+    }
+  }
+}
